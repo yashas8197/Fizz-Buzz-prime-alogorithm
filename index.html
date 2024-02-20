@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Prime Fizz Buzz Program Output</h1>
+
+  <ul id="fizzBuzzList"></ul>
+
+  <script>
+    const fizzBuzzList = document.querySelector('#fizzBuzzList')
+
+    function isPrime(num) {
+      if (num < 2) {
+        return false
+      }
+
+      for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    let numbersArr = []
+    function generateFizzBuzz(num) {
+      for (let i = 1; i <= num; i++) {
+        if (i % 3 === 0 && isPrime(i)) {
+          numbersArr.push("FizzPrime")
+        } else if (i % 5 === 0 && isPrime(i)) {
+          numbersArr.push("BuzzPrime")
+        } else if (i % 3 === 0) {
+          numbersArr.push("Fizz")
+        } else if (i % 5 === 0) {
+          numbersArr.push("Buzz")
+        } else if (isPrime(i)) {
+          numbersArr.push("Prime")
+        } else {
+          numbersArr.push(i)
+        }
+
+      }
+      return numbersArr
+    }
+
+    generateFizzBuzz(30);
+
+    function displayFizzBuzz(numbersArrToDisplay) {
+      for (let i = 0; i < numbersArrToDisplay.length; i++) {
+        const listElement = document.createElement('li');
+
+        listElement.textContent = `${numbersArrToDisplay[i]}`
+
+        fizzBuzzList.appendChild(listElement)
+      }
+    }
+
+    displayFizzBuzz(numbersArr)
+
+
+  </script>
+</body>
+
+</html>
